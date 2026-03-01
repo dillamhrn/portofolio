@@ -1,4 +1,4 @@
-# Website Portofolio (HTML + CSS)
+# Website Portofolio (HTML + CSS) ──★ ˙🍓 ̟ !!
 
 Nama   : Dilla Maharani
 
@@ -61,144 +61,268 @@ project-folder/
 
 ---
 
-## ──★ ˙Tampilan Setiap Section / Fitur
+## ──★ ˙Tampilan dan Penjelasan Code Setiap Section / Fitur
 
 ### 1) Navbar
+
+<img width="1921" height="188" alt="image" src="https://github.com/user-attachments/assets/32434f25-c28e-4313-a9ef-6507d57d7382" />
+
 **Fungsi:**
 - Menampilkan identitas singkat “My Portofolio ♡”
-- Navigasi anchor link ke `#home`, `#about`, `#certificate`
+- Navigasi anchor link ke setiap section `#home`, `#about`, `#certificate`
 - Menampilkan ikon instagram + username
 
-**Implementasi:**
-- Dibuat dengan elemen `header` dan container `.container-navbar`
-- Menu menggunakan anchor link:
-  - Home 🏡
-  - About Me 🙋🏻‍♀️
-  - Certificate 📑
+#### ✿ HTML
+```html
+<header>
+  <div class="container-navbar">
+    <div class="logo">My Portofolio ♡</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About Me</a>
+      <a href="#certificate">Certificate</a>
+    </nav>
+  </div>
+</header>
+```
+- ```<header>``` → membungkus area navbar
 
-> Screenshot Navbar:  
-> `docs/navbar.png` *(tambahkan screenshot setelah kamu ambil)*
+- ```href="#home"``` → mengarahkan ke section dengan id home
+
+- ```.container-navbar``` → mengatur layout navbar
+
+#### ✿ CSS
+```css
+.container-navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+```
+- ```display: flex;``` → membuat logo dan menu sejajar
+
+- ```justify-content: space-between;``` → memberi jarak kiri & kanan
+  
+- ```align-items: center;``` → membuat posisi vertikal rata tengah
 
 ---
 
 ### 2) Home (Hero Section)
+
+<img width="1921" height="1031" alt="image" src="https://github.com/user-attachments/assets/73f759f6-e0a7-4e8b-9d04-d607955b0ba6" />
+
+
 **Fungsi:**
-- Perkenalan singkat (nama, identitas, dan deskripsi miniproject)
-- Menampilkan **minimal 1 gambar** (foto personal)
+- Menampilkan perkenalan singkat
+- Menampilkan 1 gambar profil
 
-**Isi utama:**
-- Judul: “Halo, Saya Dilla Maharani”
-- Identitas singkat: jurusan, fakultas, universitas
-- Paragraf perkenalan / miniproject
-- Gambar pada sisi kanan
+#### ✿ HTML
+```html
+<section id="home">
+  <div class="container-home">
+    <div class="teksperkenalan">
+      <h1>Halo, Saya Dilla Maharani</h1>
+      <p>Mahasiswa Sistem Informasi...</p>
+    </div>
 
-**Implementasi:**
-- Section: `<section id="home">`
-- Layout 2 kolom memakai flex:
-  - kiri: `.teksperkenalan`
-  - kanan: `.fotoku` + `<img>`
+    <div class="fotoku">
+      <img src="images/mypoto.png" alt="Foto Saya">
+    </div>
+  </div>
+</section>
+```
 
-> Screenshot Home:  
-> `docs/home.png`
+- ```id="home"``` → id agar bisa dipanggil dari navbar
 
+- ```.container-home``` → membagi layout menjadi 2 kolom
+
+- ```<img>``` → tag untuk mengupload gambar
+
+#### ✿ CSS
+```css
+.container-home{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.fotoku img{
+  max-width: 300px;
+  border-radius: 20px;
+}
+```
+
+- ```display: flex;``` → membuat teks & gambar sejajar
+
+- ```gap``` → memberi jarak antar kolom
+
+- ```border-radius``` → membuat sudut gambar membulat/menumpul
+ 
 ---
 
 ### 3) About Me
-Section ini memuat **3 bagian besar**: deskripsi, skills (progress bar), dan pengalaman (timeline).
+Section ini terdiri dari deskripsi, skills, dan pengalaman.
 
-#### a. Deskripsi Diri
-**Fungsi:**
-- Menjelaskan ringkas profil dan aktivitas
+<img width="1921" height="1032" alt="image" src="https://github.com/user-attachments/assets/afacfa56-68c8-4b58-bfc8-fde57c89074a" />
 
-**Implementasi:**
-- Container `.deskripsi` (background denim, text putih)
 
-> Screenshot About - Deskripsi:  
-> `docs/about-deskripsi.png`
+#### a) Deskripsi Diri
 
-#### b. Skills (Progress Bar)
-**Fungsi:**
-- Menampilkan hard skill & soft skill dalam bentuk progress bar
+##### ✿ HTML
+```html
+<div class="deskripsi">
+  <h2>About Me</h2>
+  <p>Saya adalah mahasiswa...</p>
+</div>
+```
 
-**Implementasi:**
-- Dibagi 2 kolom:
-  - `Hard Skill` (HTML, CSS, UI Design)
-  - `Soft Skill` (Komunikasi, Kerja sama tim, Manajemen waktu)
-- Progress bar dibuat dengan:
-  - `.bar` sebagai track
-  - `.fill` / `.fill2` sebagai isi bar
-  - Lebar bar diatur inline `style="width:80%"` dll
+##### ✿ CSS
+```css
+.deskripsi{
+  padding: 40px;
+  border-radius: 20px;
+}
+```
 
-> Screenshot About - Skills:  
-> `docs/about-skills.png`
+- Digunakan sebagai wadah teks profil
 
-#### c. Pengalaman (Timeline)
-**Fungsi:**
-- Menampilkan pengalaman dalam format timeline agar rapi dan mudah dibaca
+- Diberi padding agar tidak terlalu rapat
 
-**Implementasi:**
-- `.timeline` menggunakan pseudo element `::before` sebagai garis vertikal
-- `.timeline-item::before` sebagai titik timeline
-- Isi pengalaman meliputi judul, tahun/peran, dan deskripsi singkat
+#### b) Skills (Progress Bar)
 
-> Screenshot About - Pengalaman:  
-> `docs/about-pengalaman.png`
+<img width="1921" height="1176" alt="image" src="https://github.com/user-attachments/assets/53d0b562-fe2b-4713-a3e8-f9ecdeac1af0" />
 
+
+**Fungsi:** Menampilkan kemampuan dalam bentuk progress bar.
+
+##### ✿ HTML
+```html
+<div class="skill">
+  <p>HTML</p>
+  <div class="bar">
+    <div class="fill" style="width:80%"></div>
+  </div>
+</div>
+```
+
+- ```.bar``` → background progress bar
+
+- ```.fill``` → isi progress bar sesuai persentase
+
+- ```style="width:80%"``` → menentukan nilai persentase skill
+
+##### ✿ CSS
+```css
+.bar{
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fill{
+  height: 10px;
+  border-radius: 10px;
+}
+```
+
+- ```overflow: hidden;``` → agar isi bar tidak keluar background
+
+- ```border-radius``` → membuat progress bar lebih modern dan tumpul
+
+#### c) Pengalaman
+
+##### ✿ HTML
+```html
+<div class="timeline">
+  <div class="timeline-item">
+    <h3>Panitia Makrab</h3>
+    <p>2024 - Divisi Acara</p>
+  </div>
+</div>
+```
+
+##### ✿ CSS
+```css
+.timeline{
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:10px;
+  top:0;
+  bottom:0;
+  width:3px;
+}
+
+.timeline-item::before{
+  content:"";
+  position:absolute;
+  left:-24px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+}
+```
+
+- ```::before``` → digunakan untuk membuat garis dan titik timeline
+
+- ```position: absolute;``` → untuk mengatur posisi garis
 ---
 
 ### 4) Certificates (Card / Grid)
+
 **Fungsi:**
-- Menampilkan daftar sertifikat dalam bentuk **card** dan layout rapi
 
-**Implementasi:**
-- Section: `<section id="certificate">`
-- Container `.sertif` menggunakan flex + gap
-- Setiap sertifikat dibuat dengan **Bootstrap Card**:
-  - `<div class="card custom-card">`
-  - `<img class="card-img-top">`
-  - `<div class="card-body">`
+- Menampilkan daftar sertifikat dalam bentuk card
 
-Contoh data sertifikat:
-- INFORSA 2024
-- INFORSA Mengabdi 2025
-- MAKRAB SI 2024
+- Menggunakan Bootstrap 5 untuk komponen card
 
-> Screenshot Certificates:  
-> `docs/certificates.png`
+#### ✿ HTML
+```html
+<section id="certificate">
+  <div class="sertif">
+    <div class="card custom-card" style="width: 18rem;">
+      <img src="images/inforsa.png" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">INFORSA 2024</h5>
+        <p class="card-text">Sertifikat kepanitiaan...</p>
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+- ```class="card"``` → komponen dari Bootstrap 5
+
+```.custom-card``` → tambahan styling dari CSS sendiri
+
+#### ✿ CSS
+```css
+.sertif{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.custom-card{
+  border-radius: 20px;
+}
+```
+
+- ```flex-wrap: wrap;``` → agar card turun ke bawah jika layar kecil
+
+- ```gap``` → memberi jarak antar card
 
 ---
 
-## 🎨 Penjelasan Styling (CSS)
-Styling utama menggunakan file **style.css**, dengan konsep:
-- **Palet warna** menggunakan CSS variable:
-  - pink, denim, light, white, grey, dark
-- Layout menggunakan **flexbox** agar tersusun rapi
-- Tiap section dibuat full-height/min-height agar tampil seperti 1 halaman per section
-- Progress bar custom untuk skill
-- Card diberi radius agar terlihat modern
+## ──★ ˙Keseluruhan Gambar Tampilan Website
 
----
+<img width="1921" height="3391" alt="screencapture-127-0-0-1-5501-index-html-2026-03-01-17_05_57" src="https://github.com/user-attachments/assets/9e3900d3-42e4-4490-aff5-1ea177a1a200" />
 
-## 📌 Catatan Responsif
-- Bootstrap 5 sudah terpasang via CDN untuk membantu komponen (card, utilities).
-- Layout utama juga memakai flex CSS.
-- Jika ingin lebih responsif di HP:
-  - kamu bisa menambahkan `@media` di `style.css` untuk mengubah flex jadi column di layar kecil.
-
----
-
-## 🖼️ Keseluruhan Gambar Tampilan Website (Wajib)
-Tambahkan folder `docs/` berisi screenshot hasil tampilan:
-- `docs/navbar.png`
-- `docs/home.png`
-- `docs/about-deskripsi.png`
-- `docs/about-skills.png`
-- `docs/about-pengalaman.png`
-- `docs/certificates.png`
-- (opsional) `docs/fullpage.png` (screenshot full page)
-
-Cara ambil screenshot:
-- Buka website di browser → gunakan screenshot tool (Snipping Tool / built-in screenshot) → simpan ke folder `docs/`.
 
 ---
 
